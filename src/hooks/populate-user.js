@@ -3,7 +3,23 @@
 
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => {
-  return async context => {
-    return context;
-  };
-};
+	return async (context) => {
+		const { app, method, result, params } = context
+
+		const addUser = async (message) => {
+			const user = await app.service('user').get(message.userId, params)
+			return {
+				...message,
+				user,
+			}
+		}
+
+		if (method === 'find') {
+			result.data = await Promise.all(result.data.map(addUser))
+		} else {
+			context.result = await addUser(result)
+		}
+
+		return context
+	}
+}
