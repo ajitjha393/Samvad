@@ -29,3 +29,4 @@ const main = async () => {
 
 	console.log('User is authenticated', auth)
 }
+main()
