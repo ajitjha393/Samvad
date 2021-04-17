@@ -24,9 +24,13 @@ const login = async () => {
 	}
 }
 
+const logout = async () => await client.logout()
+
 const main = async () => {
 	const auth = await login()
 
 	console.log('User is authenticated', auth)
+
+	await logout()
 }
 main()
