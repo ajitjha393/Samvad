@@ -14,12 +14,20 @@ client.configure(
 
 const login = async (credentials) => {
 	try {
-		return await client.reAuthenticate()
+		if (!credentials) {
+			return await client.reAuthenticate()
+		} else {
+			return await client.authenticate({
+				strategy: 'local',
+				...credentials,
+			})
+		}
+
+		// Show chat messages
 	} catch (err) {
-		return await client.authenticate({
-			strategy: 'local',
-			...credentials,
-		})
+		// show Login Page
+
+		showLogin(err)
 	}
 }
 
