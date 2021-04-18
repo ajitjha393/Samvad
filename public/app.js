@@ -111,9 +111,18 @@ const chatHTML = `
 				<a href="#" id="logout" class="button button-primary">Sign Out</a>
 			</footer>
 		</aside>
+
+		<div class="flex flex-column col col-9">
+			<main class="chat flex flex-column flex-1 clear"></main>
+
+			<form id="send-message" class="flex flex-row flex-space-betweeen">
+				<input type="text" name="text" class="flex flex-1" />
+
+				<button class="button button-primary">Send</button>
+			</form>
+		</div>
 	</div>
 </main>
-
 
 `
 
@@ -148,6 +157,39 @@ const showChat = async () => {
 	const users = await client.service('users').find()
 
 	users.data.forEach(addUser)
+}
+
+const addMessage = (message) => {
+	const { user = {} } = message
+	const chat = document.querySelector('.chat')
+
+	// Doing some sanitization
+
+	const text = message.text
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+
+	if (chat) {
+		chat.innerHTML += `
+        <div class="message flex flex-row">
+        <img src="${user.avatar}" alt="${user.email}" class="avatar" />
+        <div class="message-wrapper">
+            <p class="message-header">
+                <span class="username font-600">${user.email}</span>
+                <span class="sent-date font-300"
+                    >${moment(message.createdAt).format(
+											'MMM Do, hh:mm:ss'
+										)}</span
+                >
+            </p>
+            <p class="message-content font-300">${text}</p>
+        </div>
+    </div>
+    
+        `
+		chat.scrollTop = chat.scrollHeight - chat.clientHeight
+	}
 }
 
 const getCredentials = () => {
