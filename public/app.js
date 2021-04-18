@@ -163,9 +163,14 @@ showLogin()
 addEventListener('#signup', 'click', async () => {
 	const credentials = getCredentials()
 
-	// await client.service('users').create(credentials)
+	await client.service('users').create(credentials)
 
 	await login(credentials)
+})
+
+addEventListener('#login', 'click', async () => {
+	const user = getCredentials()
+	await login(user)
 })
 
 addEventListener('#logout', 'click', async () => {
