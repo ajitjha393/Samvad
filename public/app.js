@@ -265,4 +265,10 @@ addEventListener('#send-message', 'submit', async (ev) => {
 	await client.service('messages').create({
 		text: input.value,
 	})
+
+	input.value = ''
 })
+
+client.service('messages').on('created', addMessage)
+
+client.service('users').on('created', addUser)
