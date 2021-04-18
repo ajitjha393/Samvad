@@ -192,6 +192,24 @@ const addMessage = (message) => {
 	}
 }
 
+const addUser = (user) => {
+	const userList = document.querySelector('.user-list')
+
+	if (userList) {
+		userList.innerHTML += `
+        <li>
+            <a href="#" class="block relative">
+                <img src="${user.avatar}" class="avatar" alt="avatar" />
+                <span class="absolute username">${user.email}</span>
+            </a>
+        </li>`
+
+		const userCount = document.querySelectorAll('.user-list li').length
+
+		document.querySelector('.online-count').innerHTML = userCount
+	}
+}
+
 const getCredentials = () => {
 	const user = {
 		email: document.querySelector('[name="email"]').value,
