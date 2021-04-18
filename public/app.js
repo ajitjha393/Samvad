@@ -91,8 +91,17 @@ const loginHTML = `
 
 `
 
-const showLogin = () => {
-	document.getElementById('app').innerHTML = loginHTML
+const showLogin = (err) => {
+	if (document.querySelectorAll('#login').length && err) {
+		document
+			.querySelector('.heading')
+			.insertAdjacentElement(
+				'beforeend',
+				`<p>There was an error : ${err.message} </p>`
+			)
+	} else {
+		document.getElementById('app').innerHTML = loginHTML
+	}
 }
 
 showLogin()
