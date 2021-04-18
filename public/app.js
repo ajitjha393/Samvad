@@ -34,14 +34,6 @@ const login = async (credentials) => {
 
 const logout = async () => await client.logout()
 
-const main = async () => {
-	const auth = await login()
-
-	console.log('User is authenticated', auth)
-
-	await logout()
-}
-
 const loginHTML = `
     
 <main class="login container">
@@ -94,16 +86,32 @@ const loginHTML = `
 const chatHTML = `
 
 <main class="flex flex-column">
-<header class="title-bar flex flex-row flex-center">
-    <div class="title-wrapper block center-element">
-        <img
-            class="logo"
-            src="http://feathersjs.com/img/feathers-logo-wide.png"
-            alt="Feathers Logo"
-        />
-        <span class="title">Chat</span>
-    </div>
-</header>
+	<header class="title-bar flex flex-row flex-center">
+		<div class="title-wrapper block center-element">
+			<img
+				class="logo"
+				src="http://feathersjs.com/img/feathers-logo-wide.png"
+				alt="Feathers Logo"
+			/>
+			<span class="title">Chat</span>
+		</div>
+	</header>
+
+	<div class="flex flex-row flex-1 clear">
+		<aside class="sidebar col col-3 flex flex-column flex-space-betweeen">
+			<header class="flex flex-row flex-center">
+				<h4 class="font-300 text-center">
+					<span class="font-600 online-count">0</span> users
+				</h4>
+			</header>
+
+			<ul class="flex flex-column flex-1 list-unstyled user-list"></ul>
+
+			<footer class="flex flex-row flex-center">
+				<a href="#" id="logout" class="button button-primary">Sign Out</a>
+			</footer>
+		</aside>
+	</div>
 </main>
 
 
@@ -143,13 +151,19 @@ const addEventListener = (selector, event, handler) => {
 	})
 }
 
+const main = async () => {
+	const auth = await login()
+
+	console.log('User is authenticated', auth)
+}
+
 main()
 showLogin()
 
 addEventListener('#signup', 'click', async () => {
 	const credentials = getCredentials()
 
-	await client.service('users').create(credentials)
+	// await client.service('users').create(credentials)
 
 	await login(credentials)
 })
