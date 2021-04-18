@@ -1,7 +1,7 @@
 const { Service } = require('feathers-nedb')
 const crypto = require('crypto')
 
-const gravatarUrl = 'https://s.gravatar.com/gravatar'
+const gravatarUrl = 'https://s.gravatar.com/avatar'
 const query = 's=60'
 
 exports.Users = class Users extends (
