@@ -23,9 +23,8 @@ const login = async (credentials) => {
 			})
 		}
 
-		console.log('Signup / login Succesful. Go to chat window now ...')
-
 		// Show chat messages
+		showChat()
 	} catch (err) {
 		// show Login Page
 
@@ -42,7 +41,6 @@ const main = async () => {
 
 	await logout()
 }
-main()
 
 const loginHTML = `
     
@@ -124,7 +122,9 @@ const showLogin = (err) => {
 	}
 }
 
-showLogin()
+const showChat = () => {
+	document.getElementById('app').innerHTML = chatHTML
+}
 
 const getCredentials = () => {
 	const user = {
@@ -142,6 +142,9 @@ const addEventListener = (selector, event, handler) => {
 		}
 	})
 }
+
+main()
+showLogin()
 
 addEventListener('#signup', 'click', async () => {
 	const credentials = getCredentials()
