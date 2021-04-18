@@ -130,8 +130,24 @@ const showLogin = (err) => {
 	}
 }
 
-const showChat = () => {
+const showChat = async () => {
 	document.getElementById('app').innerHTML = chatHTML
+
+	// Get newest messages at bottom
+	const messages = await client.service('messages').find({
+		query: {
+			$sort: {
+				createdAt: -1,
+			},
+			$limit: 25,
+		},
+	})
+
+	messages.data.reverse().forEach(addMessage)
+
+	const users = await client.service('users').find()
+
+	users.data.forEach(addUser)
 }
 
 const getCredentials = () => {
