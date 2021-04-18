@@ -89,3 +89,28 @@ const showLogin = () => {
 }
 
 showLogin()
+
+const getCredentials = () => {
+	const user = {
+		email: document.querySelector('[name="email"]').value,
+		password: document.querySelector('[name="password"]').value,
+	}
+
+	return user
+}
+
+const addEventListener = (selector, event, handler) => {
+	document.addEventListener(event, async (ev) => {
+		if (ev.target.closest(selector)) {
+			handler(ev)
+		}
+	})
+}
+
+addEventListener('#signup', 'click', async () => {
+	const credentials = getCredentials()
+
+	await client.service('users').create(credentials)
+
+	await login(credentials)
+})
