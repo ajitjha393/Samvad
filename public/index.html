@@ -24,44 +24,7 @@
 	</body>
 </html>
 
-<!-- <main class="flex flex-column">
-	<header class="title-bar flex flex-row flex-center">
-		<div class="title-wrapper block center-element">
-			<img
-				class="logo"
-				src="http://feathersjs.com/img/feathers-logo-wide.png"
-				alt="Feathers Logo"
-			/>
-			<span class="title">Chat</span>
-		</div>
-	</header>
-
-	<div class="flex flex-row flex-1 clear">
-		<aside class="sidebar col col-3 flex flex-column flex-space-betweeen">
-			<header class="flex flex-row flex-center">
-				<h4 class="font-300 text-center">
-					<span class="font-600 online-count">0</span> users
-				</h4>
-			</header>
-
-			<ul class="flex flex-column flex-1 list-unstyled user-list"></ul>
-
-			<footer class="flex flex-row flex-center">
-				<a href="#" id="logout" class="button button-primary">Sign Out</a>
-			</footer>
-		</aside>
-
-		<div class="flex flex-column col col-9">
-			<main class="chat flex flex-column flex-1 clear"></main>
-
-			<form id="send-message" class="flex flex-row flex-space-betweeen">
-				<input type="text" name="text" class="flex flex-1" />
-
-				<button class="button button-primary">Send</button>
-			</form>
-		</div>
-	</div>
-</main> -->
+<!-- Chat msg template -->
 
 <template for="chat-message">
 	<div class="message flex flex-row">
@@ -77,3 +40,12 @@
 		</div>
 	</div>
 </template>
+
+<!-- User Template -->
+
+<li>
+	<a href="#" class="block relative">
+		<img src="${user.avatar}" class="avatar" alt="avatar" />
+		<span class="absolute username">${user.email}</span>
+	</a>
+</li>
