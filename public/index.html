@@ -23,29 +23,3 @@
 		<script src="app.js"></script>
 	</body>
 </html>
-
-<!-- Chat msg template -->
-
-<template for="chat-message">
-	<div class="message flex flex-row">
-		<img src="${user.avatar}" alt="${user.email}" class="avatar" />
-		<div class="message-wrapper">
-			<p class="message-header">
-				<span class="username font-600">${user.email}</span>
-				<span class="sent-date font-300"
-					>${moment(message.createdAt).format('MMM Do, hh:mm:ss')}</span
-				>
-			</p>
-			<p class="message-content font-300">${text}</p>
-		</div>
-	</div>
-</template>
-
-<!-- User Template -->
-
-<li>
-	<a href="#" class="block relative">
-		<img src="${user.avatar}" class="avatar" alt="avatar" />
-		<span class="absolute username">${user.email}</span>
-	</a>
-</li>
