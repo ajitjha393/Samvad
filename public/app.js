@@ -48,19 +48,39 @@ const loginHTML = `
 			<form class="form">
 				<fieldset>
 					<input type="email" name="email" placeholder="email" class="block" />
-                </fieldset>
-                <fieldset>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        class="block"
-                    />
-                </fieldset>
+				</fieldset>
+				<fieldset>
+					<input
+						type="password"
+						name="password"
+						placeholder="password"
+						class="block"
+					/>
+				</fieldset>
+
+				<button
+					type="button"
+					id="login"
+					class="button button-primary block signup"
+				>
+					Login
+				</button>
+
+				<button
+					type="button"
+					id="signup"
+					class="button button-primary block signup"
+				>
+					Sign Up and Login
+				</button>
+				<a class="button button-primary block" href="/oauth/github"
+					>Login with Github</a
+				>
 			</form>
 		</div>
 	</div>
 </main>
+
 
 `
 
