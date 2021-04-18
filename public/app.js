@@ -34,3 +34,21 @@ const main = async () => {
 	await logout()
 }
 main()
+
+const loginHTML = `
+    
+<main class="login container">
+<div class="row">
+    <div class="col-12 col-6-tablet push-3-tablet text-center heading">
+        <h1 class="font-100">Log In or Signup</h1>
+    </div>
+</div>
+</main>
+
+`
+
+const showLogin = () => {
+	document.getElementById('app').innerHTML = loginHTML
+}
+
+showLogin()
