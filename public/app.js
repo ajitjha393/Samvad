@@ -12,14 +12,13 @@ client.configure(
 	})
 )
 
-const login = async () => {
+const login = async (credentials) => {
 	try {
 		return await client.reAuthenticate()
 	} catch (err) {
 		return await client.authenticate({
 			strategy: 'local',
-			email: 'hello@feathersjs.com',
-			password: 'supersecret',
+			...credentials,
 		})
 	}
 }
