@@ -38,11 +38,28 @@ main()
 const loginHTML = `
     
 <main class="login container">
-<div class="row">
-    <div class="col-12 col-6-tablet push-3-tablet text-center heading">
-        <h1 class="font-100">Log In or Signup</h1>
-    </div>
-</div>
+	<div class="row">
+		<div class="col-12 col-6-tablet push-3-tablet text-center heading">
+			<h1 class="font-100">Log In or Signup</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop">
+			<form class="form">
+				<fieldset>
+					<input type="email" name="email" placeholder="email" class="block" />
+                </fieldset>
+                <fieldset>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        class="block"
+                    />
+                </fieldset>
+			</form>
+		</div>
+	</div>
 </main>
 
 `
