@@ -167,3 +167,8 @@ addEventListener('#signup', 'click', async () => {
 
 	await login(credentials)
 })
+
+addEventListener('#logout', 'click', async () => {
+	await logout()
+	document.getElementById('app').innerHTML = loginHTML
+})
