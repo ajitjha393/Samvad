@@ -118,7 +118,7 @@ const chatHTML = `
 			<form id="send-message" class="flex flex-row flex-space-betweeen">
 				<input type="text" name="text" class="flex flex-1" />
 
-				<button class="button button-primary">Send</button>
+				<button type="submit" class="button button-primary">Send</button>
 			</form>
 		</div>
 	</div>
@@ -252,4 +252,17 @@ addEventListener('#login', 'click', async () => {
 addEventListener('#logout', 'click', async () => {
 	await logout()
 	document.getElementById('app').innerHTML = loginHTML
+})
+
+addEventListener('#send-message', 'submit', async (ev) => {
+	const input = document.querySelector('[name="text"]')
+
+	ev.preventDefault()
+
+	console.log({
+		text: input.value,
+	})
+	await client.service('messages').create({
+		text: input.value,
+	})
 })
