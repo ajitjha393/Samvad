@@ -7,7 +7,7 @@ module.exports = (options = {}) => {
 		const { app, method, result, params } = context
 
 		const addUser = async (message) => {
-			const user = await app.service('user').get(message.userId, params)
+			const user = await app.service('users').get(message.userId, params)
 			return {
 				...message,
 				user,
