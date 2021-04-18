@@ -15,13 +15,15 @@ client.configure(
 const login = async (credentials) => {
 	try {
 		if (!credentials) {
-			return await client.reAuthenticate()
+			await client.reAuthenticate()
 		} else {
-			return await client.authenticate({
+			await client.authenticate({
 				strategy: 'local',
 				...credentials,
 			})
 		}
+
+		console.log('Signup / login Succesful. Go to chat window now ...')
 
 		// Show chat messages
 	} catch (err) {
